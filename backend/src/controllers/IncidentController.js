@@ -42,6 +42,7 @@ module.exports = {
 
         const incident = await connection('incidents')
         .where('id', id)
+        .orderBy('id', 'desc')
         .select('ong_id')
         .first();
 
@@ -51,6 +52,6 @@ module.exports = {
 
         await connection('incidents').where('id', id).delete();
 
-        return Response.status(204).send();
+        return res.status(204).send();
     },
 }
